@@ -29,6 +29,7 @@ const main = async () => {
   app.get("/", (_, res) => {
     res.send("hello");
   });
+
   app.listen(4000, () => {
     console.log("server started on 4000");
   });
