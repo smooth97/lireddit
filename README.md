@@ -16,4 +16,4 @@ fullstack tutorial
 - TypeGraphQL
 - Chakra
 
-### 2:00:54
+### 2:01:13
