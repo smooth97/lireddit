@@ -70,6 +70,7 @@ UserResponse = __decorate([
 let UserResolver = class UserResolver {
     me({ req, em }) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log("session", req.session);
             if (!req.session.userId) {
                 console.log("em", em);
                 return null;
@@ -78,7 +79,7 @@ let UserResolver = class UserResolver {
             return user;
         });
     }
-    register(options, { em }) {
+    register(options, { req, em }) {
         return __awaiter(this, void 0, void 0, function* () {
             if (options.username.length <= 2) {
                 return {
@@ -121,6 +122,7 @@ let UserResolver = class UserResolver {
                 }
                 console.log("message:", err);
             }
+            req.session.userId = user.id;
             return { user };
         });
     }

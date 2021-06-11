@@ -2,7 +2,7 @@
 
 fullstack tutorial
 
-## stack
+## Stack
 
 - React
 - TypeScript
@@ -16,4 +16,24 @@ fullstack tutorial
 - TypeGraphQL
 - Chakra
 
-### 2:01:13
+## Start
+
+start redis
+
+```
+brew services start redis
+```
+
+terminul 01
+
+```
+yarn watch
+```
+
+terminul 02
+
+```
+yarn dev
+```
+
+### 2:07:13
