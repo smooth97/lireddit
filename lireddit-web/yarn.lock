@@ -3383,11 +3383,6 @@ for-in@^1.0.2:
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
   integrity sha1-gQaNKVqBQuwKxybG4iAMMPttXoA=
 
-formi@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/formi/-/formi-0.4.0.tgz#a1d8ef0408b0de7e668a840a2b67b5cb222ec492"
-  integrity sha1-odjvBAiw3n5mioQKK2e1yyIuxJI=
-
 formik@^2.2.9:
   version "2.2.9"
   resolved "https://registry.yarnpkg.com/formik/-/formik-2.2.9.tgz#8594ba9c5e2e5cf1f42c5704128e119fc46232d0"
