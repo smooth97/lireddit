@@ -1,7 +1,5 @@
 # lireddit
 
-fullstack tutorial
-
 ## Stack
 
 - React
@@ -24,16 +22,22 @@ start redis
 brew services start redis
 ```
 
-terminul 01
+1.  for server terminul
 
 ```
 yarn watch
 ```
 
-terminul 02
+2.  for server terminul
 
 ```
 yarn dev
 ```
 
-### 2:32:00
+3.  for web terminul
+
+```
+yarn dev
+```
+
+### 2:46:00
