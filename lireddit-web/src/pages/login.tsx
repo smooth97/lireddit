@@ -3,19 +3,19 @@ import { Formik, Form, replace } from "formik";
 import { Box, Button } from "@chakra-ui/react";
 import { Wrapper } from "../components/Wrapper";
 import InputField from "../components/InputField";
-import { useRegisterMutation } from "../generated/graphql";
+import { useLoginMutation } from "../generated/graphql";
 import { toErrorMap } from "../utils/toErrorMap";
 import { useRouter } from "next/router";
 
 const Login: React.FC<{}> = ({}) => {
   const router = useRouter();
-  const [, register] = useRegisterMutation();
+  const [, login] = useLoginMutation();
   return (
     <Wrapper variant="small">
       <Formik
         initialValues={{ username: "", password: "" }}
         onSubmit={async (values, { setErrors }) => {
-          const response = await register(values);
+          const response = await login(values);
           if (response.data?.register.errors) {
             // error
             [{ field: "username", message: "something wrong" }];
