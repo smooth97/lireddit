@@ -83,11 +83,6 @@ export class UserResolver {
     }
 
     const hashedPassword = await argon2.hash(options.password);
-    // const user = em.create(User, {
-    //   username: options.username,
-    //   password: hashedPassword,
-    // });
-    // error catch --------------
     let user;
     try {
       const result = await (em as EntityManager)
@@ -128,9 +123,11 @@ export class UserResolver {
     @Arg("options") options: UsernamePasswordInput,
     @Ctx() { em, req }: MyContext
   ): Promise<UserResponse> {
-    const user = await em.findOneOrFail(User, {
+    const user = await em.findOne(User, {
       username: options.username,
     });
+
+    console.log("***user", user);
 
     // login error -------------------------------
     if (!user) {

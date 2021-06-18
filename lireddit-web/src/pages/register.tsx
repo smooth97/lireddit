@@ -12,6 +12,7 @@ interface registerProps {}
 const Register: React.FC<registerProps> = ({}) => {
   const router = useRouter();
   const [, register] = useRegisterMutation();
+
   return (
     <Wrapper variant="small">
       <Formik
@@ -20,7 +21,7 @@ const Register: React.FC<registerProps> = ({}) => {
           const response = await register(values);
           if (response.data?.register.errors) {
             // error
-            [{ field: "username", message: "something wrong" }];
+            // [{ field: "username", message: "something wrong" }];
             setErrors(toErrorMap(response.data.register.errors));
           } else if (response.data?.register.user) {
             // success
