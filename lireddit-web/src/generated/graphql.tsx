@@ -60,7 +60,7 @@ export type Post = {
   __typename?: 'Post';
   id: Scalars['Int'];
   createdAt: Scalars['String'];
-  updatedAt: Scalars['String'];
+  updateAt: Scalars['String'];
   title: Scalars['String'];
 };
 
@@ -166,7 +166,7 @@ export type PostsQuery = (
   { __typename?: 'Query' }
   & { posts: Array<(
     { __typename?: 'Post' }
-    & Pick<Post, 'id' | 'createdAt' | 'updatedAt' | 'title'>
+    & Pick<Post, 'id' | 'createdAt' | 'updateAt' | 'title'>
   )> }
 );
 
@@ -235,7 +235,7 @@ export const PostsDocument = gql`
   posts {
     id
     createdAt
-    updatedAt
+    updateAt
     title
   }
 }
