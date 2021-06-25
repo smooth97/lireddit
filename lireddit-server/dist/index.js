@@ -26,8 +26,10 @@ const hello_1 = require("./resolvers/hello");
 const post_1 = require("./resolvers/post");
 const user_1 = require("./resolvers/user");
 const cors_1 = __importDefault(require("cors"));
+const User_1 = require("./entities/User");
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     const orm = yield core_1.MikroORM.init(mikro_orm_config_1.default);
+    yield orm.em.nativeDelete(User_1.User, {});
     yield orm.getMigrator().up();
     const app = express_1.default();
     const RedisStore = connect_redis_1.default(express_session_1.default);
