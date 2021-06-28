@@ -68,7 +68,6 @@ let UserResolver = class UserResolver {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("session", req.session);
             if (!req.session.userId) {
-                console.log("em", em);
                 return null;
             }
             const user = yield em.findOne(User_1.User, { id: req.session.userId });
@@ -77,7 +76,6 @@ let UserResolver = class UserResolver {
     }
     register(options, { req, em }) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("options", options);
             const errors = validateRegister_1.validateRegister(options);
             if (errors) {
                 return { errors };
@@ -93,13 +91,12 @@ let UserResolver = class UserResolver {
                     password: hashedPassword,
                     email: options.email,
                     created_at: new Date(),
-                    updated_at: new Date(),
+                    update_at: new Date(),
                 })
                     .returning("*");
                 user = result[0];
             }
             catch (err) {
-                console.log("message:", err);
                 if (err.detail.includes("already exists")) {
                     return {
                         errors: [
@@ -120,12 +117,11 @@ let UserResolver = class UserResolver {
             const user = yield em.findOne(User_1.User, usernameOrEmail.includes("@")
                 ? { email: usernameOrEmail }
                 : { username: usernameOrEmail });
-            console.log("***user", user);
             if (!user) {
                 return {
                     errors: [
                         {
-                            field: "username",
+                            field: "usernameOrEmail",
                             message: "that username doesn't exist",
                         },
                     ],

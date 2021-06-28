@@ -46,7 +46,6 @@ export class UserResolver {
 
     // your not logged it
     if (!req.session.userId) {
-      console.log("em", em);
       return null;
     }
 
@@ -59,7 +58,6 @@ export class UserResolver {
     @Arg("options") options: UsernamePasswordInput,
     @Ctx() { req, em }: MyContext
   ): Promise<UserResponse> {
-    console.log("options", options);
     const errors = validateRegister(options);
     if (errors) {
       return { errors };
@@ -76,12 +74,11 @@ export class UserResolver {
           password: hashedPassword,
           email: options.email,
           created_at: new Date(),
-          updated_at: new Date(),
+          update_at: new Date(),
         })
         .returning("*");
       user = result[0];
     } catch (err) {
-      console.log("message:", err);
       if (err.detail.includes("already exists")) {
         // duplicate username error.
         return {
@@ -115,14 +112,12 @@ export class UserResolver {
         : { username: usernameOrEmail }
     );
 
-    console.log("***user", user);
-
     // login error -------------------------------
     if (!user) {
       return {
         errors: [
           {
-            field: "username",
+            field: "usernameOrEmail",
             message: "that username doesn't exist",
           },
         ],
