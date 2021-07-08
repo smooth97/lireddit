@@ -20,6 +20,7 @@ const ioredis_1 = __importDefault(require("ioredis"));
 const cors_1 = __importDefault(require("cors"));
 const express_session_1 = __importDefault(require("express-session"));
 const connect_redis_1 = __importDefault(require("connect-redis"));
+const typeorm_1 = require("typeorm");
 const constants_1 = require("./constants");
 const apollo_server_express_1 = require("apollo-server-express");
 const type_graphql_1 = require("type-graphql");
@@ -28,6 +29,15 @@ const post_1 = require("./resolvers/post");
 const user_1 = require("./resolvers/user");
 const User_1 = require("./entities/User");
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
+    const conn = yield typeorm_1.createConnection({
+        type: "postgres",
+        database: "lireddit2",
+        username: "postgres",
+        password: "postgres",
+        logging: true,
+        synchronize: true,
+        entities: [],
+    });
     const orm = yield core_1.MikroORM.init(mikro_orm_config_1.default);
     yield orm.em.nativeDelete(User_1.User, {});
     yield orm.getMigrator().up();

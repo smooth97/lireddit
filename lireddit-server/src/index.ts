@@ -6,6 +6,7 @@ import Redis from "ioredis";
 import cors from "cors";
 import session from "express-session";
 import connectRedis from "connect-redis";
+import { createConnection } from "typeorm";
 
 import { __prod__, COOKIE_NAME } from "./constants";
 import { ApolloServer } from "apollo-server-express";
@@ -17,6 +18,15 @@ import { MyContext } from "./types";
 import { User } from "./entities/User";
 
 const main = async () => {
+  const conn = await createConnection({
+    type: "postgres",
+    database: "lireddit2",
+    username: "postgres",
+    password: "postgres",
+    logging: true,
+    synchronize: true,
+    entities: [],
+  });
   const orm = await MikroORM.init(mikroOrmConfig);
   await orm.em.nativeDelete(User, {});
   await orm.getMigrator().up();
