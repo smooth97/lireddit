@@ -1,6 +1,4 @@
 import "reflect-metadata";
-import { MikroORM } from "@mikro-orm/core";
-import mikroOrmConfig from "./mikro-orm.config";
 import express from "express";
 import Redis from "ioredis";
 import cors from "cors";
@@ -16,6 +14,7 @@ import { PostResolver } from "./resolvers/post";
 import { UserResolver } from "./resolvers/user";
 import { MyContext } from "./types";
 import { User } from "./entities/User";
+import { Post } from "./entities/Post";
 
 const main = async () => {
   const conn = await createConnection({
@@ -25,11 +24,12 @@ const main = async () => {
     password: "postgres",
     logging: true,
     synchronize: true,
-    entities: [],
+    entities: [Post, User],
   });
-  const orm = await MikroORM.init(mikroOrmConfig);
-  await orm.em.nativeDelete(User, {});
-  await orm.getMigrator().up();
+
+  // const orm = await MikroORM.init(mikroOrmConfig);
+  // await orm.em.nativeDelete(User, {});
+  // await orm.getMigrator().up();
 
   const app = express();
 
@@ -66,7 +66,7 @@ const main = async () => {
       resolvers: [HelloResolver, PostResolver, UserResolver],
       validate: false,
     }),
-    context: ({ req, res }): MyContext => ({ em: orm.em, req, res, redis }),
+    context: ({ req, res }): MyContext => ({ req, res, redis }),
   });
 
   apolloServer.applyMiddleware({
