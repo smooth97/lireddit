@@ -27,10 +27,6 @@ const main = async () => {
     entities: [Post, User],
   });
 
-  // const orm = await MikroORM.init(mikroOrmConfig);
-  // await orm.em.nativeDelete(User, {});
-  // await orm.getMigrator().up();
-
   const app = express();
 
   const RedisStore = connectRedis(session);
