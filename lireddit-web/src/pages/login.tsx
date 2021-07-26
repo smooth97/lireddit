@@ -39,6 +39,7 @@ const Login: React.FC<{}> = ({}) => {
                 name="password"
                 placeholder="Password"
                 label="password"
+                type="password"
               />
             </Box>
             <Flex mt={2}>
