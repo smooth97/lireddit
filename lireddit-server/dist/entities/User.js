@@ -14,11 +14,6 @@ const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
 const Post_1 = require("./Post");
 let User = class User extends typeorm_1.BaseEntity {
-    constructor() {
-        super(...arguments);
-        this.createdAt = Date;
-        this.updatedAt = Date;
-    }
 };
 __decorate([
     type_graphql_1.Field(() => type_graphql_1.Int),
@@ -46,12 +41,12 @@ __decorate([
 __decorate([
     type_graphql_1.Field(() => String),
     typeorm_1.CreateDateColumn(),
-    __metadata("design:type", Object)
+    __metadata("design:type", Date)
 ], User.prototype, "createdAt", void 0);
 __decorate([
     type_graphql_1.Field(() => String),
     typeorm_1.UpdateDateColumn(),
-    __metadata("design:type", Object)
+    __metadata("design:type", Date)
 ], User.prototype, "updatedAt", void 0);
 User = __decorate([
     type_graphql_1.ObjectType(),
