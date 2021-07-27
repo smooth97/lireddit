@@ -164,7 +164,7 @@ export type CreatePostMutation = (
   { __typename?: 'Mutation' }
   & { createPost: (
     { __typename?: 'Post' }
-    & Pick<Post, 'id' | 'createdAt' | 'updatedAt' | 'title' | 'creatorId' | 'points'>
+    & Pick<Post, 'id' | 'createdAt' | 'updatedAt' | 'title' | 'text' | 'points' | 'creatorId'>
   ) }
 );
 
@@ -276,8 +276,9 @@ export const CreatePostDocument = gql`
     createdAt
     updatedAt
     title
-    creatorId
+    text
     points
+    creatorId
   }
 }
     `;
