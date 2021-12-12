@@ -1,10 +1,10 @@
-import { Middleware } from "type-graphql/dist/interfaces/Middleware";
+import { MiddlewareFn } from "type-graphql";
 import { MyContext } from "src/types";
 
-export const isAuth: Middleware<MyContext> = ({ context }, next) => {
+export const isAuth: MiddlewareFn<MyContext> = ({ context }, next) => {
   if (!context.req.session.userId) {
     throw new Error("not authenticated");
   }
 
-  return next;
+  return next();
 };

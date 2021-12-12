@@ -24,7 +24,10 @@ class PostInput {
 export class PostResolver {
   // list
   @Query(() => [Post])
-  async posts(): Promise<Post[]> {
+  async posts(
+      @Arg('limit') limit: number,
+      @Arg('cursor') cursor: string
+  ): Promise<Post[]> {
     return Post.find();
   }
 

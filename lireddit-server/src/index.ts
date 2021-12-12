@@ -17,9 +17,9 @@ import { User } from "./entities/User";
 import { Post } from "./entities/Post";
 
 const main = async () => {
-  const conn = await createConnection({
+  await createConnection({
     type: "postgres",
-    database: "lireddit2",
+    database: "lireddit",
     username: "postgres",
     password: "postgres",
     logging: true,
@@ -49,7 +49,7 @@ const main = async () => {
         maxAge: 1000 * 60 * 60 * 24 * 365 * 10, // 10 Years
         httpOnly: true,
         sameSite: "lax", // csrf
-        secure: __prod__, // cookie only wors in https
+        secure: __prod__, // cookie only works in https
       },
       saveUninitialized: false,
       secret: "keyboard cat",

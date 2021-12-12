@@ -5,7 +5,7 @@ const isAuth = ({ context }, next) => {
     if (!context.req.session.userId) {
         throw new Error("not authenticated");
     }
-    return next;
+    return next();
 };
 exports.isAuth = isAuth;
 //# sourceMappingURL=isAuth.js.map

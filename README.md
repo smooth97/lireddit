@@ -20,6 +20,7 @@ start redis
 
 ```
 brew services start redis
+redis-server
 ```
 
 1.  for server terminul
@@ -40,4 +41,4 @@ yarn dev
 yarn dev
 ```
 
-### 6:24:00
+### 6:36:00
