@@ -7,7 +7,7 @@ import NextLink from "next/link";
 
 const Index = () => {
     const [{data, error}] = usePostsQuery({variables: {limit: 10, cursor: ""}});
-
+ 
     return (
         <Layout>
             <NextLink href="/create-post">
