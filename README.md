@@ -23,19 +23,19 @@ brew services start redis
 redis-server
 ```
 
-1.  for server terminul
+1. for server terminul
 
 ```
 yarn watch
 ```
 
-2.  for server terminul
+2. for server terminul
 
 ```
 yarn dev
 ```
 
-3.  for web terminul
+3. for web terminul
 
 ```
 yarn dev
