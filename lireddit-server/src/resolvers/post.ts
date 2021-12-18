@@ -24,10 +24,10 @@ class PostInput {
     text: string;
 }
 
-@Resolver()
+@Resolver(Post)
 export class PostResolver {
     @FieldResolver(() => String)
-    textResolver(@Root() root: Post) {
+    textSnippet(@Root() root: Post) {
         return root.text.slice(0, 50)
     }
 
